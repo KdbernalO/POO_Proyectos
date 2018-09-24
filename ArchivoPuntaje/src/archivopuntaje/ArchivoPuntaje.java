@@ -14,22 +14,28 @@ public class ArchivoPuntaje {
         int scoreAleatorio;
         Random numeroAleatorio = new Random ();
         scoreAleatorio=numeroAleatorio.nextInt(101);
-        System.out.println("Numeros aleatorios del 0 al 100: " + scoreAleatorio );
+        /**System.out.println("Numeros aleatorios del 0 al 100: " + scoreAleatorio );**/   
         
-        try {
-            File file = new File("Score.txt");
+        for (int i=0 ; i<=scoreAleatorio ; i++ ){
+            scoreAleatorio=numeroAleatorio.nextInt(101);
+        
+            try {
+                File file = new File("Score.txt");
                     
-                if (!file.exists()){
-                    file.createNewFile();
-                }
-                
-            FileWriter DatosScore = new FileWriter(file);
-            try(BufferedWriter Score = new BufferedWriter (DatosScore)) {
-                Score.write("Score: " + scoreAleatorio);
-                Score.close();
-            }
-        }catch (IOException e){
-            System.out.println("Error: " + e);
-        }   
+                    if (!file.exists()){
+                        file.createNewFile();
+                    }
+            
+                    FileWriter Sobrescribe = new FileWriter(file.getAbsoluteFile(),true);
+                    try(BufferedWriter Score = new BufferedWriter(Sobrescribe)) {
+                        Score.write("Score: " + scoreAleatorio);
+                        Score.write("\n");
+                        Score.newLine();
+                        Score.close();
+                    }
+                }catch (IOException e){
+                 System.out.println("Error: " + e);
+                 } 
     }
+         }
 }
