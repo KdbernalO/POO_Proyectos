@@ -5,7 +5,9 @@
  */
 package agenda;
 
+import agenda.Datos.DBCitas;
 import agenda.Datos.DBContactos;
+import agenda.logica.Cita;
 import agenda.logica.Contacto;
 
 /**
@@ -21,8 +23,14 @@ public class Agenda {
         DBContactos dbcontactos = new DBContactos();
         Contacto[] contactos = dbcontactos.getContactos();
         
+        DBCitas dbcitas = new DBCitas();
+        Cita[] citas = dbcitas.getCitas();
+        
         for (Contacto contacto : contactos){
             System.out.println("Nombre: " + contacto.getNombre() + " " + contacto.getApellido());
+        }
+        for (Cita cita : citas){
+            System.out.println("Persona: " + cita.getPersona()+ "Lugar: " + cita.getLugar()+ "Hora: " + cita.getHora()+ "Descripcion: " + cita.getDescripcion());
         }
     }
     
