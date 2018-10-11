@@ -17,5 +17,8 @@ public class Main {
     public static void main(String[] args) {
         interfaz f = new interfaz();
         interfazCitas f2 = new interfazCitas();
+        /*Al ejecutar el programa, ambas 
+        interfaces de mostraran por separado
+        pero una se superpone a la otra*/
     }
 }

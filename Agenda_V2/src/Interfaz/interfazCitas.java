@@ -24,7 +24,7 @@ public final class interfazCitas implements ActionListener {
     DefaultTableModel modeloTabla;
     JTable tablaCitas;
     JTabbedPane pestana;
-    Container panelInformacion, panelCitas;
+    Container panelcitas, panelCitas;
     JLabel labelId, labelPersona, labelLugar, labelHora,
             labelDescripcion, labelDireccionDomicilio, labelDireccionOficina,
             labelCelular, labelCorreo;
@@ -51,13 +51,10 @@ public final class interfazCitas implements ActionListener {
         menuItem.addActionListener(this);
         menu.add(menuItem);
 
-        panelInformacion = new JPanel(null);
-        panelInformacion.setLayout(null);
-        panelCitas = new JPanel(null);
-        panelCitas.setLayout(null);
+        panelcitas = new JPanel(null);
+        panelcitas.setLayout(null);
         pestana = new JTabbedPane();
-        pestana.addTab("Información de citas", panelInformacion);
-        pestana.addTab("Citas", panelCitas);
+        pestana.addTab("Información de citas", panelcitas);
 
         int y = 5;
         int x = 10;
@@ -69,54 +66,54 @@ public final class interfazCitas implements ActionListener {
         y += 30;
         labelPersona = new JLabel("persona", SwingConstants.RIGHT);
         labelPersona.setBounds(x, y, labelAncho, labelAlto);
-        panelInformacion.add(labelPersona);
+        panelcitas.add(labelPersona);
 
         textPersona = new JTextField();
         textPersona.setBounds(x + 160, y, textAncho, textAlto);
-        panelInformacion.add(textPersona);
+        panelcitas.add(textPersona);
 
         labelLugar = new JLabel("Lugar", SwingConstants.RIGHT);
         labelLugar.setBounds(x + 350, y, labelAncho, labelAlto);
-        panelInformacion.add(labelLugar);
+        panelcitas.add(labelLugar);
 
         textLugar = new JTextField();
         textLugar.setBounds(x + 510, y, textAncho, textAlto);
-        panelInformacion.add(textLugar);
+        panelcitas.add(textLugar);
         y += 30;
         labelHora = new JLabel("Hora", SwingConstants.RIGHT);
         labelHora.setBounds(x, y, labelAncho, labelAlto);
-        panelInformacion.add(labelHora);
+        panelcitas.add(labelHora);
 
         textHora = new JTextField();
         textHora.setBounds(x + 160, y, textAncho, textAlto);
-        panelInformacion.add(textHora);
+        panelcitas.add(textHora);
 
         labelDescripcion = new JLabel("Descripcion", SwingConstants.RIGHT);
         labelDescripcion.setBounds(x + 350, y, labelAncho, labelAlto);
-        panelInformacion.add(labelDescripcion);
+        panelcitas.add(labelDescripcion);
 
         textDescripcion = new JTextField();
         textDescripcion.setBounds(x + 510, y, textAncho, textAlto);
-        panelInformacion.add(textDescripcion);
+        panelcitas.add(textDescripcion);
 
         y += 60;
         botonNuevoCita = new JButton("Nuevo Cita");
         botonNuevoCita.setBounds(x, y, labelAncho, 50);
-        panelInformacion.add(botonNuevoCita);
+        panelcitas.add(botonNuevoCita);
         botonNuevoCita.addActionListener(this);
 
         botonGuardarCita = new JButton("Guardar Cita");
         botonGuardarCita.setBounds(x + 200, y, labelAncho, 50);
-        panelInformacion.add(botonGuardarCita);
+        panelcitas.add(botonGuardarCita);
         botonGuardarCita.addActionListener(this);
         botonEditarCita = new JButton("Editar Cita");
         botonEditarCita.setBounds(x + 400, y, labelAncho, 50);
-        panelInformacion.add(botonEditarCita);
+        panelcitas.add(botonEditarCita);
         botonEditarCita.addActionListener(this);
 
         botonBorrarCita = new JButton("Borrar Cita");
         botonBorrarCita.setBounds(x + 600, y, labelAncho, 50);
-        panelInformacion.add(botonBorrarCita);
+        panelcitas.add(botonBorrarCita);
         botonBorrarCita.addActionListener(this);
 
         citas = dbc2.getCitas();
@@ -143,7 +140,7 @@ public final class interfazCitas implements ActionListener {
                 fila = tablaCitas.rowAtPoint(e.getPoint());
                 int columna = tablaCitas.columnAtPoint(e.getPoint());
                 if ((fila > -1) && (columna > -1)) {
-                    textId.setText(String.valueOf(tablaCitas.getValueAt(fila, 0)));
+                    textPersona.setText(String.valueOf(tablaCitas.getValueAt(fila, 0)));
                     for (int i = 0; i < citas.length; i++) {
                         if (String.valueOf(citas[i].getPersona()).equals(String.valueOf(tablaCitas.getValueAt(fila, 0)))) {
                             textPersona.setText(citas[i].getPersona());

@@ -24,7 +24,7 @@ public final class interfaz implements ActionListener {
     DefaultTableModel modeloTabla;
     JTable tablaContactos;
     JTabbedPane pestana;
-    Container panelInformacion, panelCitas;
+    Container panelInformacion;
     JLabel labelId, labelNombre, labelApellido, labelTelefonoDomicilio,
             labelTelefonoOficina, labelDireccionDomicilio, labelDireccionOficina,
             labelCelular, labelCorreo;
@@ -56,11 +56,8 @@ public final class interfaz implements ActionListener {
 
         panelInformacion = new JPanel(null);
         panelInformacion.setLayout(null);
-        panelCitas = new JPanel(null);
-        panelCitas.setLayout(null);
         pestana = new JTabbedPane();
         pestana.addTab("Información de contacto", panelInformacion);
-        pestana.addTab("Citas", panelCitas);
 
         int y = 5;
         int x = 10;
@@ -367,6 +364,7 @@ public final class interfaz implements ActionListener {
             this.estado = 0;
         }
         alterarEstado();
+        
     }
 }
 
