@@ -3,15 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/Interfaz/DialogAcerca.java</file>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/agenda/Datos/DBConexion.java</file>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/agenda/Datos/DBContactos.java</file>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/agenda/logica/Cita.java</file>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/agenda/Datos/DBCitas.java</file>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/Interfaz/interfaz.java</file>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/agenda/Main.java</file>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/agenda/logica/Contacto.java</file>
-            <file>file:/E:/POO_Proyectos-master/Agenda/src/agenda/Agenda.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/agenda/logica/Cita.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/agenda/logica/Contacto.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/agenda/Datos/DBConexion.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/agenda/Datos/DBContactos.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/agenda/Datos/DBCitas.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/Interfaz/interfaz.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/Interfaz/interfazCitas.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/agenda/Main.java</file>
+            <file>file:/C:/Users/Estudiantes/Documents/NetBeansProjects/Agenda_V2/src/agenda/Agenda.java</file>
         </group>
     </open-files>
 </project-private>

@@ -306,10 +306,6 @@ public final class interfaz implements ActionListener {
         if (accion.equals("Salir")) {
             System.exit(-1);
         }
-        if (accion.equals("Acerca de ...")) {
-            DialogAcerca a = new DialogAcerca(null, false);
-            a.setVisible(true);
-        }
         if (accion.equals("Nuevo Contacto")) {
             limpiarCampos();
             this.estado = 1;

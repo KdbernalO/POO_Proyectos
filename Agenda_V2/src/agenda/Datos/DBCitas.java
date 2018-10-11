@@ -15,12 +15,13 @@ import java.sql.SQLException;
  * @author Estudiantes
  */
 public class DBCitas {
+
     DBConexion cn2;
-    
+
     public DBCitas() {
         cn2 = new DBConexion();
     }
-    
+
     public Cita[] getCitas() {
         int registros = 0;
         try {
@@ -45,7 +46,7 @@ public class DBCitas {
             int i = 0;
             while (res.next()) {
                 data[i] = new Cita();
-                
+
                 data[i].setPersona(res.getString("con_persona"));
                 data[i].setLugar(res.getString("con_lugar"));
                 data[i].setHora(res.getString("con_hora"));
@@ -57,5 +58,68 @@ public class DBCitas {
             System.out.println(e);
         }
         return data;
+    }
+
+    public int insertarContacto(Cita c2) {
+        int cont_usuario = -1;
+        int resultado = 0;//no hubo errores de validacion
+        try {
+            PreparedStatement pstm = cn2.getConexion().prepareStatement("select count(1) as cont "
+                    + " from citas ");
+            ResultSet res = pstm.executeQuery();
+            res.next();
+            cont_usuario = res.getInt("cont");
+            res.close();
+
+            if (cont_usuario == 0) {
+                pstm = cn2.getConexion().prepareStatement("insert into contactos (con_persona, "
+                        + " con_lugar,"
+                        + " con_hora,"
+                        + " con_descripcion,"
+                        + " values(?,?,?,?)");
+                pstm.setString(1, c2.getPersona());
+                pstm.setString(2, c2.getLugar());
+                pstm.setString(3, c2.getHora());
+                pstm.setString(4, c2.getDescripcion());
+
+                pstm.executeUpdate();
+            } else {
+                resultado = -2;//el login ya existe
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return resultado;
+    }
+
+    public int actualizarContacto(Cita c2) {
+        int resultado = 0;
+        try {
+            PreparedStatement pstm = cn2.getConexion().prepareStatement("update citas " + " set con_persona = ?, "
+                    + " con_lugar = ?,"
+                    + " con_hora = ?,"
+                    + " con_descripcion = ?,");
+            pstm.setString(1, c2.getPersona());
+            pstm.setString(2, c2.getLugar());
+            pstm.setString(3, c2.getHora());
+            pstm.setString(4, c2.getDescripcion());
+            resultado = pstm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return resultado;
+    }
+
+    public int borrarContacto(Cita c2) {
+        int resultado = 0;
+        try {
+            PreparedStatement pstm = cn2.getConexion().prepareStatement("delete from citas "
+                    + " where con_persona = ?");
+            pstm.setString(1, c2.getPersona());
+            resultado = pstm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return resultado;
     }
 }
