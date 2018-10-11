@@ -60,7 +60,7 @@ public class DBCitas {
         return data;
     }
 
-    public int insertarContacto(Cita c2) {
+    public int insertarCita(Cita c2) {
         int cont_usuario = -1;
         int resultado = 0;//no hubo errores de validacion
         try {
@@ -92,7 +92,7 @@ public class DBCitas {
         return resultado;
     }
 
-    public int actualizarContacto(Cita c2) {
+    public int actualizarCita(Cita c2) {
         int resultado = 0;
         try {
             PreparedStatement pstm = cn2.getConexion().prepareStatement("update citas " + " set con_persona = ?, "
@@ -110,7 +110,7 @@ public class DBCitas {
         return resultado;
     }
 
-    public int borrarContacto(Cita c2) {
+    public int borrarCita(Cita c2) {
         int resultado = 0;
         try {
             PreparedStatement pstm = cn2.getConexion().prepareStatement("delete from citas "

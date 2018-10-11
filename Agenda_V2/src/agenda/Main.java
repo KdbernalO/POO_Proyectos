@@ -6,6 +6,7 @@
 package agenda;
 
 import Interfaz.interfaz;
+import Interfaz.interfazCitas;
 
 /**
  *
@@ -15,5 +16,6 @@ public class Main {
 
     public static void main(String[] args) {
         interfaz f = new interfaz();
+        interfazCitas f2 = new interfazCitas();
     }
 }

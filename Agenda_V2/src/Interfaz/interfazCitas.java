@@ -207,36 +207,87 @@ public final class interfazCitas implements ActionListener {
                 textLugar.setEditable(false);
                 textHora.setEditable(false);
                 textDescripcion.setEditable(false);
-                
+
                 break;
             case 3://estado para editar un contacto
-                botonNuevoContacto.setEnabled(false);
-                botonBorrarContacto.setEnabled(false);
-                botonEditarContacto.setEnabled(false);
-                botonGuardarContacto.setEnabled(true);
-                textId.setEditable(false);
-                textNombre.setEditable(true);
-                textApellido.setEditable(true);
-                textTelefonoDomicilio.setEditable(true);
-                textTelefonoOficina.setEditable(true);
-                textDireccionDomicilio.setEditable(true);
-                textDireccionOficina.setEditable(true);
-                textCorreo.setEditable(true);
-                textCelular.setEditable(true);
+                botonNuevoCita.setEnabled(false);
+                botonBorrarCita.setEnabled(false);
+                botonEditarCita.setEnabled(false);
+                botonGuardarCita.setEnabled(true);
+                textPersona.setEditable(true);
+                textLugar.setEditable(true);
+                textHora.setEditable(true);
+                textDescripcion.setEditable(true);
                 break;
         }
     }
 
     public void limpiarCampos() {
-        textId.setText("");
-        textNombre.setText("");
-        textApellido.setText("");
-        textTelefonoDomicilio.setText("");
-        textTelefonoOficina.setText("");
-        textDireccionDomicilio.setText("");
-        textDireccionOficina.setText("");
-        textCorreo.setText("");
-        textCelular.setText("");
+        textPersona.setText("");
+        textLugar.setText("");
+        textHora.setText("");
+        textDescripcion.setText("");
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String accion = e.getActionCommand();
+        System.out.println(accion);
+        if (accion.equals("Salir")) {
+            System.exit(-1);
+        }
+        if (accion.equals("Nueva Cita")) {
+            limpiarCampos();
+            this.estado = 1;
+        }
+        if (accion.equals("Editar Cita")) {
+            this.estado = 3;
+        }
+        if (accion.equals("Guardar Cita")) {
+            if (this.estado == 1) {
+                Cita c2 = new Cita();
+                c2.setPersona(textPersona.getText());
+                c2.setLugar(textLugar.getText());
+                c2.setHora(textHora.getText());
+                c2.setDescripcion(textDescripcion.getText());
+                int r = dbc2.insertarCita(c2);
+                if (r > 0) {
+                    Object[] newRow = {r, c2.getPersona(), c2.getLugar(), c2.getHora(), c2.getDescripcion()};
+                    modeloTabla.addRow(newRow);
+                    JOptionPane.showMessageDialog(null, "Cita agregada");
+                }
+            } else if (this.estado == 3) {
+                Cita c2 = new Cita();
+                c2.setPersona(textPersona.getText());
+                c2.setLugar(textLugar.getText());
+                c2.setHora(textHora.getText());
+                c2.setDescripcion(textDescripcion.getText());
+              
+                int r = dbc2.actualizarCita(c2);
+                if (r > 0) {
+                    modeloTabla.setValueAt(c2.getPersona(), fila, 1);
+                    modeloTabla.setValueAt(c2.getLugar(), fila, 2);
+                    modeloTabla.setValueAt(c2.getHora(), fila, 3);
+                    modeloTabla.setValueAt(c2.getDescripcion(), fila, 4);
+                    JOptionPane.showMessageDialog(null, "Cita actualizada");
+                }
+            }
+            citas = dbc2.getCitas();
+            limpiarCampos();
+            this.estado = 0;
+        }
+        if (accion.equals("Borrar Cita")) {
+            Cita c2 = new Cita();
+            c2.setPersona(textPersona.getText());
+            int r = dbc2.borrarCita(c2);
+            if (r > 0) {
+                modeloTabla.removeRow(fila);
+                JOptionPane.showMessageDialog(null, "Cita borrada");
+                limpiarCampos();
+            }
+            citas = dbc2.getCitas();
+            this.estado = 0;
+        }
+        alterarEstado();
+    }
 }
